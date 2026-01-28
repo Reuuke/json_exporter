@@ -1,11 +1,9 @@
-ARG ARCH="amd64"
-ARG OS="linux"
-FROM quay.io/prometheus/busybox-${OS}-${ARCH}:glibc
+# syntax=docker/dockerfile:1
+FROM --platform=$BUILDPLATFORM quay.io/prometheus/busybox:glibc
 LABEL maintainer="The Prometheus Authors <prometheus-developers@googlegroups.com>"
 
-ARG ARCH="amd64"
-ARG OS="linux"
-COPY .build/${OS}-${ARCH}/json_exporter /bin/json_exporter
+ARG TARGETOS TARGETARCH
+COPY .build/${TARGETOS}-${TARGETARCH}/json_exporter /bin/json_exporter
 
 EXPOSE      7979
 USER        nobody
