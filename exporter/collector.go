@@ -162,10 +162,10 @@ func extractValue(logger *slog.Logger, data []byte, path string, enableJSONOutpu
 		return res, false, nil
 	}
 
-	if ValueToTimestamp == true {
+	if ValueToTimestamp {
 		time, err := time.Parse(time.RFC3339, buf.String())
 		if err != nil {
-			logger.Error("msg", "Failed to convert value to timestamp", "err", err, "path", path, "data", data)
+			logger.Error("Failed to convert value to timestamp", "err", err, "path", path, "data", data)
 			return strconv.FormatInt(0, 10), false, nil
 		}
 		return strconv.FormatInt(time.Unix(), 10), false, nil
