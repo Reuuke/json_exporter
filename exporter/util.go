@@ -106,6 +106,7 @@ func CreateMetricsList(c config.Module) ([]JSONMetric, error) {
 				LabelsJSONPaths:        variableLabelsValues,
 				ValueType:              valueType,
 				EpochTimestampJSONPath: metric.EpochTimestamp,
+				AllowMissingKey:        metric.AllowMissingKey,
 				ValueToTimestamp:       metric.ValueToTimestamp,
 			}
 			metrics = append(metrics, jsonMetric)
@@ -130,6 +131,7 @@ func CreateMetricsList(c config.Module) ([]JSONMetric, error) {
 					LabelsJSONPaths:        variableLabelsValues,
 					ValueType:              valueType,
 					EpochTimestampJSONPath: metric.EpochTimestamp,
+					AllowMissingKey:        metric.AllowMissingKey,
 					ValueToTimestamp:       metric.ValueToTimestamp,
 				}
 				metrics = append(metrics, jsonMetric)
